@@ -1,0 +1,83 @@
+record (bi, "s7-status") {
+  field (DTYP, "S7plc stat")
+  field (INP,  "@Testsystem0")
+  field (SCAN, "I/O Intr")
+  field (ZNAM, "disconnected")
+  field (ONAM, "connected")
+  field (ZSV,  "MAJOR")
+  field (FLNK, "s7-status-counter")
+}
+
+record (calc, "s7-status-counter")
+{
+   field (INPA, "s7-status-counter")
+   field (CALC, "A+1")
+   field (FLNK, "s7-disconnect-counter")
+}
+
+record (calc, "s7-disconnect-counter")
+{
+   field (INPA, "s7-status")
+   field (INPB, "s7-disconnect-counter.LA")
+   field (INPC, "s7-disconnect-counter")
+   field (CALC, "(A=0&&B=1)?C+1:C")
+}
+record(ai, "ai16-1") 
+{   
+	field(SCAN, " I/O Intr")   
+	field(DTYP, "S7plc")   
+	field(INP, "@Testsystem0/0 T=WORD") 
+} 
+record(bi, "bi-1") 
+{   
+	field(SCAN, "I/O Intr")   
+	field(DTYP, "S7plc")   
+	field(INP, "@Testsystem0/2 B=0 T=BYTE") 
+} 
+record(bi, "bi-2") 
+{   
+	field(SCAN, "I/O Intr")   
+	field(DTYP, "S7plc")   
+	field(INP, "@Testsystem0/2 B=1 T=BYTE") 
+} 
+record(bi, "bi-3") 
+{   
+	field(SCAN, "I/O Intr")   
+	field(DTYP, "S7plc")   
+	field(INP, "@Testsystem0/2 B=2 T=BYTE") 
+} 
+record(bi, "bi-4") 
+{   
+	field(SCAN, "I/O Intr")   
+	field(DTYP, "S7plc")   
+	field(INP, "@Testsystem0/2 B=3 T=BYTE") 
+} 
+record(bo, "bo-1") 
+{   
+	field(DTYP, "S7plc")   
+	field(OUT, "@Testsystem0/2 B=0 T=BYTE")   
+	field(PINI, "YES") 
+} 
+record(bo, "bo-2") 
+{   
+	field(DTYP, "S7plc")   
+	field(OUT, "@Testsystem0/2 B=1 T=BYTE")   
+	field(PINI, "YES") 
+} 
+record(bo, "bo-3") 
+{   
+	field(DTYP, "S7plc")   
+	field(OUT, "@Testsystem0/2 B=2 T=BYTE")   
+	field(PINI, "YES") 
+} 
+record(bo, "bo-4") 
+{   
+	field(DTYP, "S7plc")   
+	field(OUT, "@Testsystem0/2 B=3 T=BYTE")   
+	field(PINI, "YES") 
+}
+record(ao, "ao16-1") 
+{   
+	field(DTYP, "S7plc")   
+	field(OUT, "@Testsystem0/0 T=WORD") 
+}
